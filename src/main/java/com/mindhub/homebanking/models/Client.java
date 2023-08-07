@@ -16,15 +16,17 @@ public class Client {
     private String dni;
     private String name;
     private String lastname;
-// falta agregar clase email 1.20 del video
+
+    private  String email;
     public Client (){
 
     }
 
-    public Client(String dni, String name, String lastname) {
+    public Client(String dni, String name, String lastname, String email) {
         this.dni = dni;
         this.name = name;
         this.lastname = lastname;
+        this.email = email;
     }
 
     public Long getId() {
@@ -53,5 +55,13 @@ public class Client {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
