@@ -6,6 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Client {
@@ -18,6 +22,8 @@ public class Client {
     private String lastname;
 
     private  String email;
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    private Set<Account> accounts = new HashSet<>();
     public Client (){
 
     }
@@ -63,5 +69,13 @@ public class Client {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Account> getAccounts() {
+        return accounts;
+    }
+    public void addAccount(Account account){
+        account.setClient(this);
+        accounts.add(account);
     }
 }

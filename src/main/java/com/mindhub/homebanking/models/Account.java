@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.FetchType;
 
 
 @Entity
@@ -19,8 +22,15 @@ public class Account {
     private LocalDate creationDate;
     private Double balance;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="client_id")
+    private Client client;
 
-    public Account (){
+
+
+
+
+    public Account(){
 
     }
 
@@ -30,6 +40,8 @@ public class Account {
         this.balance = balance;
 
     }
+
+
 
     public Long getId() {
         return id;
@@ -61,5 +73,13 @@ public class Account {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
